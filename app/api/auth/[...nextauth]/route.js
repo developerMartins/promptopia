@@ -11,6 +11,18 @@ const handler = NextAuth({
     })
   ],
 
+  cookies: {
+    sessionToken: {
+      name: `__Secure-next-auth.session-token`,
+      options: {
+        httpOnly: true,
+        sameSite: 'lax',
+        path: '/',
+        secure: true
+      }
+    },
+  },
+
   callbacks: {
     async session({ session }) {
       const sessionUser = await User.findOne({
