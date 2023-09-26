@@ -30,7 +30,7 @@ const Feed = () => {
   useEffect(() => {
     const fetchPosts = async () => {
       const res = await fetch('/api/prompt');
-      const data = res.json();
+      const data = await res.json();
 
       setPosts(data);
     };
